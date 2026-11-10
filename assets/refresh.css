@@ -530,10 +530,8 @@ input:focus-visible {
 .app-mode .statusbar,
 .app-mode .island { display: none; }
 .app-mode .app {
-  width: calc(100% / 1.06);
-  height: calc(100% / 1.06);
+  height: 100%;
   padding-top: env(safe-area-inset-top);
-  zoom: 1.06;
   -webkit-text-size-adjust: 110%;
   text-size-adjust: 110%;
 }
@@ -542,7 +540,7 @@ input:focus-visible {
   padding-bottom: calc(7px + env(safe-area-inset-bottom));
 }
 .app-mode .app-exit {
-  display: inline-flex;
+  display: none !important;
   position: fixed;
   z-index: 350;
   left: 12px;
