@@ -501,8 +501,10 @@
 .dash-card { padding: 15px; border-radius: 15px; background: #FBFCFA; border: 1px solid #E8F0EA; }
 .dash-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 13px; }
 .dash-card-head h3 { margin-top: 2px; font-size: 11px; font-weight: 800; letter-spacing: -.015em; }
+.dash-card-head h3 small { font-size: 7px; font-weight: 700; color: var(--gris); letter-spacing: 0; }
 .dash-chip { padding: 4px 6px; border-radius: 5px; background: #EAF4EC; color: var(--verde-oscuro); font-size: 6px; font-weight: 800; white-space: nowrap; }
 .dash-chip--warn { background: var(--crema-claro); color: #8E651B; }
+.dash-chip--illustrative { max-width: 150px; white-space: normal; text-align: right; line-height: 1.25; }
 .bars { display: flex; flex-direction: column; gap: 8px; }
 .bar-row { display: grid; grid-template-columns: 62px 1fr 26px; align-items: center; gap: 6px; }
 .bar-row > span { font-size: 7.5px; font-weight: 700; color: var(--tinta-suave); }
@@ -518,6 +520,8 @@
 .zero-list span { flex: 1; font-size: 8px; color: var(--tinta-suave); }
 .zero-list strong { font-family: var(--font-display); font-size: 14px; font-weight: 600; }
 .zero-list button { width: 15px; height: 15px; display: grid; place-items: center; border-radius: 50%; background: #EAF4EC; color: var(--verde-oscuro); font-size: 10px; font-weight: 700; line-height: 1; }
+.dash-outcome { min-height: 92px; display: flex; align-items: center; font-size: 12px; line-height: 1.55; color: var(--tinta-suave); }
+.dash-outcome strong { color: var(--verde-oscuro); font-weight: 800; }
 .zero-list button:hover { background: var(--verde); color: var(--blanco); }
 
 .aware-list { display: flex; flex-direction: column; gap: 11px; }
