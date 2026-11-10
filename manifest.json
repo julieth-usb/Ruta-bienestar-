@@ -1,11 +1,14 @@
 {
   "name": "Ruta Bienestar",
   "short_name": "Ruta Bienestar",
+  "id": "./?app=1",
   "description": "Apoyo estudiantil de la Universidad Simón Bolívar.",
   "lang": "es",
   "start_url": "./?app=1",
   "scope": "./",
+  "display_override": ["standalone", "minimal-ui"],
   "display": "standalone",
+  "prefer_related_applications": false,
   "background_color": "#FAFBF6",
   "theme_color": "#09843B",
   "icons": [
