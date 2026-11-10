@@ -714,6 +714,12 @@ body.demo-mode .stage-copy { display: none; }
 body.demo-mode .device-stage { padding: 0; }
 body.demo-mode .device-stage::before { width: 780px; height: 780px; opacity: .8; }
 body.demo-mode .phone { height: min(800px, calc(100dvh - 130px)); }
+body.demo-mode .app {
+  width: 106.4%;
+  height: 106.4%;
+  transform: scale(.94);
+  transform-origin: top center;
+}
 body.demo-mode .device-caption { display: none; }
 body.demo-mode .float-card { display: none; }
 body.demo-mode .demo-exit { display: inline-flex; }
