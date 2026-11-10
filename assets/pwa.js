@@ -41,13 +41,12 @@
 
   function hideInstallUI() {
     if (promptEl) promptEl.hidden = true;
-    if (headerBtn) headerBtn.hidden = true;
   }
 
   function showInstallUI() {
-    if (isStandalone() || isDismissed()) return;
+    if (isStandalone()) return;
     if (headerBtn) headerBtn.hidden = false;
-    if (promptEl) {
+    if (promptEl && !isDismissed()) {
       window.clearTimeout(showInstallUI.timer);
       showInstallUI.timer = window.setTimeout(function () {
         if (!isDismissed() && !isStandalone()) promptEl.hidden = false;
@@ -124,10 +123,10 @@
       hideInstallUI();
       return;
     }
-    if (window.matchMedia("(display-mode: browser)").matches && isDismissed()) {
+    if (isDismissed()) {
       hideInstallUI();
     }
-    if (headerBtn) headerBtn.hidden = !deferredPrompt;
+    showInstallUI();
   });
 
   /* ---------- Controles ---------- */
