@@ -642,7 +642,7 @@ input:focus-visible {
 /* Demo a pantalla completa en celular */
 @media (max-width: 720px) {
   body.demo-mode .stage { display: block; height: 100dvh; padding: 0; }
-  body.demo-mode .device-stage { display: block; height: 100%; }
+  body.demo-mode .device-stage { display: block; height: 100%; max-height: none; }
   body.demo-mode .phone {
     max-width: none;
     width: 100%;

@@ -707,13 +707,17 @@ body.demo-mode .stage {
   align-items: center;
   justify-content: center;
   min-height: 100dvh;
-  padding: 18px 24px 112px;
+  padding: 14px 24px 124px;
   gap: 0;
 }
 body.demo-mode .stage-copy { display: none; }
-body.demo-mode .device-stage { padding: 0; }
+body.demo-mode .device-stage {
+  width: auto;
+  max-height: calc(100dvh - 150px);
+  padding: 0;
+}
 body.demo-mode .device-stage::before { width: 780px; height: 780px; opacity: .8; }
-body.demo-mode .phone { height: min(700px, calc(100dvh - 170px)); }
+body.demo-mode .phone { height: min(640px, calc(100dvh - 220px)); }
 body.demo-mode .device-caption { display: none; }
 body.demo-mode .float-card { display: none; }
 body.demo-mode .demo-exit { display: inline-flex; }
