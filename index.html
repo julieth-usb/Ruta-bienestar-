@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ruta Bienestar · Apoyo estudiantil USB</title>
+<meta name="description" content="Ruta Bienestar organiza los servicios de apoyo estudiantil de la Universidad Simón Bolívar por situaciones de vida. Encuentra apoyo, agenda y da el siguiente paso.">
+<meta name="theme-color" content="#09843B">
+<meta name="color-scheme" content="light">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Ruta Bienestar">
+<link rel="preload" href="assets/fonts/PlusJakartaSans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/Fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/app.css">
+<link rel="stylesheet" href="assets/landing.css">
+<link rel="stylesheet" href="assets/refresh.css">
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var standalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+    if (params.get("app") === "1" || standalone) document.documentElement.classList.add("app-mode");
+  })();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#prototipo">Saltar al contenido</a>
+
+<!-- ============ ICON SPRITE ============ -->
+<svg xmlns="http://www.w3.org/2000/svg" class="svg-sprite" aria-hidden="true" focusable="false">
+  <symbol id="logo-mark" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="14" fill="#09843B"/>
+    <path d="M14.5 34c0-6.4 6.2-6.4 6.2-12.4s6.2-6 6.2-9.6" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/>
+    <circle cx="34" cy="14" r="3.7" fill="#FFB91B"/>
+    <circle cx="14.5" cy="34" r="2.1" fill="#AED6C6"/>
+  </symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.6 10.7 12 3.4l8.4 7.3"/><path d="M5.6 9.4V20h12.8V9.4"/><path d="M9.4 20v-5.4h5.2V20"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="m15.2 8.8-1.7 4.7-4.7 1.7 1.7-4.7 4.7-1.7Z"/></symbol>
+  <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M12 3.4 13.8 9l5.6 1.8-5.6 1.8L12 18.2l-1.8-5.6L4.6 10.8 10.2 9 12 3.4Z"/><path d="M18.6 16.2 19.4 18.6l2.4.8-2.4.8-.8 2.4-.8-2.4-2.4-.8 2.4-.8.8-2.4Z"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.4"/><circle cx="18" cy="6" r="2.4"/><path d="M8.4 18h3.4a3 3 0 0 0 0-6h-.6a3 3 0 0 1 0-6h4.4"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 9.4a6 6 0 0 0-12 0c0 6-2.2 7.2-2.2 7.2h16.4S18 15.4 18 9.4Z"/><path d="M10 20a2.2 2.2 0 0 0 4 0"/></symbol>
+  <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+  <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h16"/><path d="m14 6 6 6-6 6"/></symbol>
+  <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M20 12H4"/><path d="m10 6-6 6 6 6"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m16 16 4.4 4.4"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m4.8 12.4 4.7 4.7L19.4 7"/></symbol>
+  <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12.2 2.7 2.7 5.5-5.6"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.8"/><path d="M12 7.4V12l3.1 2"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.4" y="5.4" width="17.2" height="15.2" rx="3"/><path d="M3.4 10h17.2M8.2 3.4v3.8M15.8 3.4v3.8"/><path d="M7.8 14h2M14.2 14h2M7.8 17.2h2M14.2 17.2h2"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24"><rect x="3" y="6.4" width="12.4" height="11.2" rx="3"/><path d="m15.4 11 5.6-3v8l-5.6-3"/></symbol>
+  <symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M19.4 10.2c0 5.4-7.4 10.4-7.4 10.4S4.6 15.6 4.6 10.2a7.4 7.4 0 1 1 14.8 0Z"/><circle cx="12" cy="10.2" r="2.6"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M4 7.4A2.4 2.4 0 0 1 6.4 5h11.2A2.4 2.4 0 0 1 20 7.4v9.2a2.4 2.4 0 0 1-2.4 2.4H6.4A2.4 2.4 0 0 1 4 16.6V7.4Z"/><path d="M4 8.6h16"/><path d="M15.4 13.8h2.4"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.2S3.8 15.4 3.8 9.6a4.4 4.4 0 0 1 8.2-2 4.4 4.4 0 0 1 8.2 2c0 5.8-8.2 10.6-8.2 10.6Z"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.4A2.4 2.4 0 0 1 6.4 3H20v15H6.4A2.4 2.4 0 0 0 4 20.4V5.4Z"/><path d="M4 18a2 2 0 0 1 2-2h14"/><path d="M8 7h7M8 10.2h5"/></symbol>
+  <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3.2" y="7.4" width="17.6" height="12.4" rx="2.8"/><path d="M8.4 7.4V5.6a2 2 0 0 1 2-2h3.2a2 2 0 0 1 2 2v1.8"/><path d="M3.2 12.4h17.6"/><path d="M10 12.4v2h4v-2"/></symbol>
+  <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M13.8 4.2c2.6-1.8 6-1.2 6-1.2s.6 3.4-1.2 6l-5.4 5.4-4.8-4.8 5.4-5.4Z"/><path d="m8.4 9.6-4 .4 2.2 2.2M14.4 15.6l-.4 4-2.2-2.2"/><circle cx="15.2" cy="8.8" r="1.6"/><path d="M7.2 16.8c-1.6 1.6-1.6 4-1.6 4s2.4 0 4-1.6"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8.2" r="3.2"/><path d="M3.4 20c0-3.4 2.5-5.6 5.6-5.6s5.6 2.2 5.6 5.6"/><circle cx="17" cy="9.2" r="2.4"/><path d="M16 14.6c2.8 0 4.6 1.9 4.6 4.6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 5.8v5.6c0 4.6 3 7.6 7 9.6 4-2 7-5 7-9.6V5.8L12 3Z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3.6v11.2"/><path d="m7.6 10.8 4.4 4.4 4.4-4.4"/><path d="M4.2 17.2v1.6a1.8 1.8 0 0 0 1.8 1.8h12a1.8 1.8 0 0 0 1.8-1.8v-1.6"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6"/><path d="M20 4 10.4 13.6"/><path d="M18 14.4V19a1.6 1.6 0 0 1-1.6 1.6H5A1.6 1.6 0 0 1 3.4 19V7.6A1.6 1.6 0 0 1 5 6h4.6"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="m3.6 11.4 16.8-7.2-7.2 16.8-1.8-7.8-7.8-1.8Z"/><path d="M11.4 12.6 20.4 4.2"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 10.8v5.6"/><path d="M12 7.6h.01"/></symbol>
+  <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6.4 4.4h11.2v16.2L12 16.2l-5.6 4.4V4.4Z"/></symbol>
+  <symbol id="i-bookmark-fill" viewBox="0 0 24 24"><path d="M6.4 4.4h11.2v16.2L12 16.2l-5.6 4.4V4.4Z" fill="currentColor"/></symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6.4h16L14 13v5.2l-4 2V13L4 6.4Z"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M20 11.6a8 8 0 0 1-11.8 7L4 20l1.5-4A8 8 0 1 1 20 11.6Z"/><path d="M8.8 8.2c.4 3.2 2.6 5.4 5.8 5.8l1.2-1.4 1.8.8c-.2 1.4-1.2 2.2-2.8 2.2-3.4 0-7-3.6-7-7 0-1.4.8-2.4 2.2-2.6l.8 1.6-2 2Z"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.2 3.8h3l1.4 3.8-2 1.4a12.4 12.4 0 0 0 5.4 5.4l1.4-2 3.8 1.4v3a2 2 0 0 1-2.2 2A16.4 16.4 0 0 1 4.2 6a2 2 0 0 1 2-2.2Z"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V4"/><path d="M4 20h16"/><path d="M7.6 16.4v-4.8M12 16.4V7.6M16.4 16.4v-7"/></symbol>
+  <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="M4 10.2v3.6l3.4 1.2 2.2 4.4 2.4-1.2-1.8-3.6 8.4 3V5.4l-14.6 4.8Z"/><path d="M18.2 8.4a4 4 0 0 1 0 7.2"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3.4" y="3.4" width="17.2" height="17.2" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.2 6.8h.01"/></symbol>
+  <symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M14.2 3.4v10.8a4.4 4.4 0 1 1-3.8-4.4"/><path d="M14.2 3.4c.6 3 2.6 4.8 5.6 5"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3.4" y="5.4" width="17.2" height="13.2" rx="3"/><path d="m4.4 7.4 7.6 5.6 7.6-5.6"/></symbol>
+  <symbol id="i-qr" viewBox="0 0 24 24"><rect x="3.6" y="3.6" width="6" height="6" rx="1"/><rect x="14.4" y="3.6" width="6" height="6" rx="1"/><rect x="3.6" y="14.4" width="6" height="6" rx="1"/><path d="M14.4 14.4h2.8v2.8h-2.8zM20 14.4h.01M14.4 20h.01M20 20h.01M20 17.2h.01M17.2 17.2h.01"/></symbol>
+  <symbol id="i-accessibility" viewBox="0 0 24 24"><circle cx="12" cy="4.8" r="1.8"/><path d="M5.4 8.4c4.4 1.6 8.8 1.6 13.2 0"/><path d="M12 8.4v6M12 14.4l-3.4 5.8M12 14.4l3.4 5.8"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3.6 21 20H3L12 3.6Z"/><path d="M12 9.4v4.2M12 17h.01"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 8.4V4.2l-2 2a8 8 0 1 0 2.4 8.4"/><path d="M20 4.2h-4.2"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m10 8.4 5.2 3.6-5.2 3.6V8.4Z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.4 2.6 5.4 5.8.8-4.2 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.2-4.1 5.8-.8L12 3.4Z"/></symbol>
+  <symbol id="i-quote" viewBox="0 0 24 24"><path d="M9.4 6.2c-3 1.2-4.8 3.6-4.8 6.6v5h5v-5H6.6c0-1.8 1-3.2 2.8-4V6.2ZM19.4 6.2c-3 1.2-4.8 3.6-4.8 6.6v5h5v-5h-3c0-1.8 1-3.2 2.8-4V6.2Z"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 4C11 4 5.4 7.8 5.4 14.4c0 2.6 2 4.6 4.6 4.6C16.6 19 20 12.4 20 4Z"/><path d="M4 21c2-6 6.2-9.2 11.4-11.4"/></symbol>
+  <symbol id="i-face-bien" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M8.4 13.4a4 4 0 0 0 7.2 0"/><path d="M9 9.6h.01M15 9.6h.01"/></symbol>
+  <symbol id="i-face-cansado" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M8.6 14.6h6.8"/><path d="M8.2 9.2h2M13.8 9.2h2"/></symbol>
+  <symbol id="i-face-ansioso" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M8.2 15.2c1.2-1.2 2.4 1.2 3.8 0s2.4 1.2 3.8 0"/><path d="M8.2 9.8c.6-.6 1.4-.6 2 0M13.8 9.8c.6-.6 1.4-.6 2 0"/></symbol>
+  <symbol id="i-chat-heart" viewBox="0 0 24 24"><path d="M20.4 11.4a8.4 8.4 0 0 1-12.4 7.4L3.6 20l1.2-4.2a8.4 8.4 0 1 1 15.6-4.4Z"/><path d="M12 15.6s-3.4-2-3.4-4.2a1.9 1.9 0 0 1 3.4-1.1 1.9 1.9 0 0 1 3.4 1.1c0 2.2-3.4 4.2-3.4 4.2Z"/></symbol>
+</svg>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="siteHeader">
+  <a class="brand" href="#top">
+    <svg class="logo-mark" aria-hidden="true"><use href="#logo-mark"/></svg>
+    <span class="brand-text"><strong>Ruta Bienestar</strong><small>Universidad Simón Bolívar</small></span>
+  </a>
+  <nav class="site-nav" aria-label="Secciones del proyecto">
+    <a href="#prototipo">App</a>
+    <a href="#como-funciona">Cómo funciona</a>
+    <a href="#campana">Campaña</a>
+    <a href="#impacto">Impacto</a>
+    <a href="#entregable">Proyecto</a>
+  </nav>
+  <div class="header-actions">
+    <button class="install-btn" id="installBtn" type="button" hidden>
+      <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+      <span>Instalar app</span>
+    </button>
+    <button class="btn btn-primary btn-sm header-demo" data-action="focus-demo">
+      Abrir app
+      <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+    </button>
+    <details class="mobile-nav" id="mobileNav">
+      <summary aria-label="Abrir menú de navegación">
+        <svg class="icon" aria-hidden="true"><use href="#i-filter"/></svg>
+      </summary>
+      <nav aria-label="Menú móvil">
+        <a href="#prototipo">La app</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#campana">Campaña</a>
+        <a href="#impacto">Impacto</a>
+        <a href="#entregable">Proyecto</a>
+        <button type="button" data-action="focus-demo">Abrir la app</button>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO + PROTOTIPO ============ -->
+<section class="stage" id="prototipo">
+  <div class="stage-copy">
+    <span class="eyebrow"><span class="pulse-dot"></span> Prototipo funcional · PWA</span>
+    <h1>El apoyo de la U,<br><span class="accent"><span>a un toque.</span></span></h1>
+    <p class="lead">Los servicios de apoyo, organizados por lo que te pasa. Encuentra, agenda y da el siguiente paso sin adivinar dependencias.</p>
+    <div class="stage-cta">
+      <button class="btn btn-primary" data-action="focus-demo">
+        Abrir la app
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+      </button>
+      <a class="btn btn-secondary" href="#como-funciona">Cómo funciona</a>
+    </div>
+    <div class="hero-badges" aria-label="Características principales">
+      <span><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Gratis</span>
+      <span><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg> Confidencial</span>
+      <span><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Sin descargas</span>
+    </div>
+    <details class="tour">
+      <summary>Recorrido por pantallas <svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg></summary>
+      <div class="screen-picker">
+        <div class="chips" role="group" aria-label="Ir a una pantalla del prototipo">
+          <button class="chip is-active" data-screen="home"><span>01</span> Inicio</button>
+          <button class="chip" data-screen="explorar"><span>02</span> Explorar</button>
+          <button class="chip" data-screen="sami"><span>03</span> Sami</button>
+          <button class="chip" data-screen="detalle"><span>04</span> Servicio</button>
+          <button class="chip" data-screen="agendar"><span>05</span> Agendar</button>
+          <button class="chip" data-screen="ruta"><span>06</span> Mi ruta</button>
+          <button class="chip" data-screen="onboarding"><span>07</span> Onboarding</button>
+        </div>
+      </div>
+    </details>
+    <p class="micro-note">
+      <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
+      Datos y respuestas simuladas con fines académicos.
+    </p>
+  </div>
+
+  <div class="device-stage">
+    <div class="phone" id="phone">
+      <div class="phone-screen">
+        <div class="statusbar">
+          <span class="status-time">9:41</span>
+          <span class="status-icons" aria-hidden="true">
+            <svg viewBox="0 0 18 12"><path d="M1 8.5h2V11H1zM5 6.2h2V11H5zM9 3.8h2V11H9zM13 1.2h2V11h-2z" fill="currentColor"/></svg>
+            <svg viewBox="0 0 16 12"><path d="M1 4.6A10 10 0 0 1 15 4.6M3.4 7a6.6 6.6 0 0 1 9.2 0M5.8 9.4a3.1 3.1 0 0 1 4.4 0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg viewBox="0 0 24 12"><rect x="1" y="1.4" width="19" height="9.2" rx="2.6" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="2.8" y="3.2" width="14.4" height="5.6" rx="1.4" fill="currentColor"/><path d="M21.4 4.4v3.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </span>
+        </div>
+        <div class="island" aria-hidden="true"></div>
+
+        <div class="app" id="app">
+          <!-- HOME -->
+          <section class="screen is-active" id="screen-home" data-screen="home" aria-label="Inicio de Ruta Bienestar">
+            <div class="screen-scroll">
+              <header class="app-head">
+                <div class="app-brand">
+                  <svg class="logo-mini" aria-hidden="true"><use href="#logo-mark"/></svg>
+                  <div><strong>Ruta Bienestar</strong><span>USB · Cúcuta</span></div>
+                </div>
+                <div class="app-head-actions">
+                  <button class="icon-btn" data-action="notifications" aria-label="Ver notificaciones, 3 sin leer">
+                    <svg class="icon"><use href="#i-bell"/></svg><span class="badge" id="notifBadge">3</span>
+                  </button>
+                  <button class="avatar" data-screen="ruta" aria-label="Ir a mi ruta">JC</button>
+                </div>
+              </header>
+
+              <div class="pad">
+                <div class="greeting">
+                  <div>
+                    <p class="kicker" id="todayLabel">Martes, 27 de octubre</p>
+                    <h2>Hola, <span id="userName">Julieth</span></h2>
+                  </div>
+                  <button class="route-pill" data-screen="ruta">
+                    <svg class="icon" aria-hidden="true"><use href="#i-route"/></svg>
+                    <span><strong id="homeProgress">3/5</strong>Mi ruta</span>
+                  </button>
+                </div>
+
+                <div class="mood-block">
+                  <p class="mood-q">¿Cómo llegas hoy?</p>
+                  <div class="mood-row" role="group" aria-label="Selecciona cómo te sientes">
+                    <button class="mood" data-mood="bien"><span class="mood-face"><svg class="icon"><use href="#i-face-bien"/></svg></span><span>Bien</span></button>
+                    <button class="mood" data-mood="cansado"><span class="mood-face"><svg class="icon"><use href="#i-face-cansado"/></svg></span><span>Cansado</span></button>
+                    <button class="mood" data-mood="ansioso"><span class="mood-face"><svg class="icon"><use href="#i-face-ansioso"/></svg></span><span>Ansioso</span></button>
+                    <button class="mood" data-mood="hablar"><span class="mood-face"><svg class="icon"><use href="#i-chat-heart"/></svg></span><span>Hablar</span></button>
+                  </div>
+                  <div class="mood-response" id="moodResponse" hidden>
+                    <p id="moodText"></p>
+                    <div id="moodActions" class="mood-actions"></div>
+                  </div>
+                </div>
+
+                <div class="section-head">
+                  <h3>¿Qué necesitas?</h3>
+                  <button data-screen="explorar">Ver todo</button>
+                </div>
+                <div class="situation-grid">
+                  <button class="situation" data-go-service="academico" data-tone="mint">
+                    <span class="sit-icon"><svg class="icon"><use href="#i-book"/></svg></span>
+                    <strong>Me cuesta una materia</strong>
+                  </button>
+                  <button class="situation" data-go-service="psicologia" data-tone="teal">
+                    <span class="sit-icon"><svg class="icon"><use href="#i-heart"/></svg></span>
+                    <strong>Me siento mal</strong>
+                  </button>
+                  <button class="situation" data-go-service="becas" data-tone="gold">
+                    <span class="sit-icon"><svg class="icon"><use href="#i-wallet"/></svg></span>
+                    <strong>Necesito apoyo económico</strong>
+                  </button>
+                  <button class="situation" data-go-service="profesional" data-tone="sky">
+                    <span class="sit-icon"><svg class="icon"><use href="#i-compass"/></svg></span>
+                    <strong>Dudas sobre mi futuro</strong>
+                  </button>
+                </div>
+
+                <div class="section-head">
+                  <h3>Para ti</h3>
+                  <button data-screen="explorar">Ver los 8</button>
+                </div>
+                <div class="service-mini-list" id="homeServices"></div>
+
+                <button class="sami-banner" data-screen="sami">
+                  <span class="sami-orb"><svg class="icon"><use href="#i-sparkles"/></svg></span>
+                  <span class="sami-copy">
+                    <span class="mini-label">Sami · 24/7</span>
+                    <strong>¿No sabes por dónde empezar?</strong>
+                    <span>Cuéntale lo que pasa y te orienta.</span>
+                  </span>
+                  <span class="arrow-circle"><svg class="icon"><use href="#i-chevron-right"/></svg></span>
+                </button>
+              </div>
+            </div>
+            <nav class="bottom-nav" aria-label="Navegación principal">
+              <button class="nav-item is-active" data-screen="home"><svg class="icon"><use href="#i-home"/></svg><span>Inicio</span></button>
+              <button class="nav-item" data-screen="explorar"><svg class="icon"><use href="#i-compass"/></svg><span>Explorar</span></button>
+              <button class="nav-item nav-item--sami" data-screen="sami"><span class="nav-sami"><svg class="icon"><use href="#i-sparkles"/></svg></span><span>Sami</span></button>
+              <button class="nav-item" data-screen="ruta"><svg class="icon"><use href="#i-route"/></svg><span>Mi ruta</span></button>
+            </nav>
+          </section>
+
+          <!-- EXPLORAR -->
+          <section class="screen" id="screen-explorar" data-screen="explorar" aria-label="Explorar servicios">
+            <div class="screen-scroll">
+              <header class="app-head app-head--simple">
+                <div><p class="kicker">Directorio</p><h2>Explorar</h2></div>
+                <button class="icon-btn" data-action="notifications" aria-label="Ver notificaciones, 3 sin leer"><svg class="icon"><use href="#i-bell"/></svg><span class="badge">3</span></button>
+              </header>
+              <div class="pad">
+                <label class="search-box">
+                  <svg class="icon"><use href="#i-search"/></svg>
+                  <input id="serviceSearch" type="search" placeholder="Busca por situación o servicio" autocomplete="off" aria-label="Buscar servicios">
+                  <button type="button" class="clear-search" id="clearSearch" aria-label="Borrar búsqueda" hidden><svg class="icon"><use href="#i-close"/></svg></button>
+                </label>
+                <div class="filter-scroll" id="filters" role="group" aria-label="Filtrar por categoría">
+                  <button class="filter is-active" data-filter="todos">Todos</button>
+                  <button class="filter" data-filter="Académico">Académico</button>
+                  <button class="filter" data-filter="Emocional">Emocional</button>
+                  <button class="filter" data-filter="Económico">Económico</button>
+                  <button class="filter" data-filter="Profesional">Profesional</button>
+                  <button class="filter" data-filter="Emprendimiento">Emprendimiento</button>
+                  <button class="filter" data-filter="Inclusión">Inclusión</button>
+                  <button class="filter" data-filter="Cultura">Cultura</button>
+                  <button class="filter" data-filter="Salud">Salud</button>
+                </div>
+                <div class="result-row">
+                  <span id="resultCount">8 servicios</span>
+                  <span class="result-note"><svg class="icon"><use href="#i-check-circle"/></svg> Todos gratuitos</span>
+                </div>
+                <div id="serviceList" class="service-list"></div>
+                <div class="empty-state" id="emptyState" hidden>
+                  <span class="empty-icon"><svg class="icon"><use href="#i-search"/></svg></span>
+                  <h3>No encontramos ese servicio</h3>
+                  <p>Prueba con otra palabra o pregúntale a Sami. Puede orientarte en segundos.</p>
+                  <button class="btn btn-primary btn-sm" data-screen="sami">Hablar con Sami</button>
+                </div>
+              </div>
+            </div>
+            <nav class="bottom-nav" aria-label="Navegación principal">
+              <button class="nav-item" data-screen="home"><svg class="icon"><use href="#i-home"/></svg><span>Inicio</span></button>
+              <button class="nav-item is-active" data-screen="explorar"><svg class="icon"><use href="#i-compass"/></svg><span>Explorar</span></button>
+              <button class="nav-item nav-item--sami" data-screen="sami"><span class="nav-sami"><svg class="icon"><use href="#i-sparkles"/></svg></span><span>Sami</span></button>
+              <button class="nav-item" data-screen="ruta"><svg class="icon"><use href="#i-route"/></svg><span>Mi ruta</span></button>
+            </nav>
+          </section>
+
+          <!-- DETALLE -->
+          <section class="screen screen--detail" id="screen-detalle" data-screen="detalle" aria-label="Detalle del servicio">
+            <div class="screen-scroll" id="detailScroll"></div>
+            <div class="detail-cta" id="detailCta"></div>
+          </section>
+
+          <!-- AGENDAR -->
+          <section class="screen screen--agendar" id="screen-agendar" data-screen="agendar" aria-label="Agendar una cita">
+            <div class="screen-scroll" id="bookingScroll"></div>
+            <div class="sticky-action" id="bookingAction"></div>
+          </section>
+
+          <!-- CONFIRMACIÓN -->
+          <section class="screen" id="screen-confirmacion" data-screen="confirmacion" aria-label="Confirmación de la cita">
+            <div class="screen-scroll" id="confirmScroll"></div>
+          </section>
+
+          <!-- MI RUTA -->
+          <section class="screen" id="screen-ruta" data-screen="ruta" aria-label="Mi ruta">
+            <div class="screen-scroll">
+              <header class="app-head app-head--simple">
+                <div><p class="kicker">Tu proceso</p><h2>Mi ruta</h2></div>
+                <button class="avatar" data-screen="onboarding" aria-label="Editar mi perfil">JC</button>
+              </header>
+              <div class="pad" id="routeContent"></div>
+            </div>
+            <nav class="bottom-nav" aria-label="Navegación principal">
+              <button class="nav-item" data-screen="home"><svg class="icon"><use href="#i-home"/></svg><span>Inicio</span></button>
+              <button class="nav-item" data-screen="explorar"><svg class="icon"><use href="#i-compass"/></svg><span>Explorar</span></button>
+              <button class="nav-item nav-item--sami" data-screen="sami"><span class="nav-sami"><svg class="icon"><use href="#i-sparkles"/></svg></span><span>Sami</span></button>
+              <button class="nav-item is-active" data-screen="ruta"><svg class="icon"><use href="#i-route"/></svg><span>Mi ruta</span></button>
+            </nav>
+          </section>
+
+          <!-- SAMI -->
+          <section class="screen screen--chat" id="screen-sami" data-screen="sami" aria-label="Chat con Sami">
+            <header class="chat-head">
+              <button class="icon-btn" data-back aria-label="Volver"><svg class="icon"><use href="#i-chevron-left"/></svg></button>
+              <span class="sami-avatar"><svg class="icon"><use href="#i-sparkles"/></svg></span>
+              <div class="chat-id"><strong>Sami</strong><span><i class="online-dot"></i> En línea · responde al instante</span></div>
+              <button class="icon-btn" data-action="sami-info" aria-label="Información sobre Sami"><svg class="icon"><use href="#i-info"/></svg></button>
+            </header>
+            <div class="chat-scroll" id="chatScroll" aria-live="polite"></div>
+            <div class="chat-compose">
+              <div class="quick-replies" id="quickReplies"></div>
+              <form class="chat-form" id="chatForm">
+                <input id="chatInput" type="text" placeholder="Escribe lo que necesitas…" autocomplete="off" aria-label="Escribe un mensaje a Sami">
+                <button type="submit" aria-label="Enviar mensaje"><svg class="icon"><use href="#i-send"/></svg></button>
+              </form>
+              <p class="chat-disclaimer">Sami es un prototipo. No reemplaza la atención de un profesional.</p>
+            </div>
+          </section>
+
+          <!-- ONBOARDING -->
+          <section class="screen screen--onboarding" id="screen-onboarding" data-screen="onboarding" aria-label="Configura tu ruta">
+            <div class="onb-top">
+              <button class="icon-btn" id="onbBack" aria-label="Volver"><svg class="icon"><use href="#i-chevron-left"/></svg></button>
+              <div class="onb-progress"><i id="onbBar"></i></div>
+              <button class="onb-skip" id="onbSkip">Saltar</button>
+            </div>
+            <div class="onb-body" id="onbBody"></div>
+          </section>
+
+          <!-- OVERLAYS -->
+          <div class="sheet-backdrop" id="sheetBackdrop" hidden></div>
+          <aside class="notifications-sheet" id="notificationsSheet" aria-label="Notificaciones" aria-hidden="true" inert>
+            <div class="sheet-handle"></div>
+            <div class="sheet-head">
+              <div><p class="kicker">Ponte al día</p><h3>Notificaciones</h3></div>
+              <button class="icon-btn" data-action="close-sheet" aria-label="Cerrar notificaciones"><svg class="icon"><use href="#i-close"/></svg></button>
+            </div>
+            <div class="notif-list">
+              <button class="notif" data-go-service="becas">
+                <span class="notif-icon notif-icon--gold"><svg class="icon"><use href="#i-calendar"/></svg></span>
+                <span><strong>Becas 2027: inscripciones abiertas</strong><small>Hace 2 h · Cierra el 15 de noviembre</small></span>
+                <i class="notif-unread"></i>
+              </button>
+              <button class="notif" data-screen="sami">
+                <span class="notif-icon notif-icon--mint"><svg class="icon"><use href="#i-sparkles"/></svg></span>
+                <span><strong>Sami tiene una recomendación para ti</strong><small>Hace 5 h · Según tu última búsqueda</small></span>
+                <i class="notif-unread"></i>
+              </button>
+              <button class="notif" data-screen="ruta">
+                <span class="notif-icon notif-icon--sky"><svg class="icon"><use href="#i-heart"/></svg></span>
+                <span><strong>Taller: manejar el estrés en parciales</strong><small>Ayer · Jueves, 10:00 a. m.</small></span>
+                <i class="notif-unread"></i>
+              </button>
+            </div>
+            <p class="sheet-note"><svg class="icon"><use href="#i-shield"/></svg> Solo recibes avisos relevantes para tu perfil. Puedes desactivarlos cuando quieras.</p>
+          </aside>
+
+          <div class="toast" id="toast" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+    <p class="device-caption"><span class="device-dot"></span> Interactúa con el prototipo · usa los botones o el recorrido guiado</p>
+  </div>
+</section>
+
+<!-- ============ CÓMO FUNCIONA ============ -->
+<section class="section section--white" id="como-funciona">
+  <div class="container">
+    <div class="section-heading section-heading--split">
+      <div>
+        <span class="eyebrow eyebrow--dark">La solución</span>
+        <h2>De la duda a la cita,<br>en cinco pasos.</h2>
+      </div>
+      <p>Ruta Bienestar no crea servicios nuevos: hace visibles, comprensibles y accesibles los que ya existen. Organiza la información por lo que le pasa al estudiante, no por el organigrama de la universidad.</p>
+    </div>
+
+    <div class="steps">
+      <article class="step">
+        <span class="step-num">01</span>
+        <span class="step-icon"><svg class="icon"><use href="#i-qr"/></svg></span>
+        <h3>Llega</h3>
+        <p>Por WhatsApp, QR en la inducción, redes o el portal. Sin descargar nada.</p>
+      </article>
+      <article class="step">
+        <span class="step-num">02</span>
+        <span class="step-icon"><svg class="icon"><use href="#i-users"/></svg></span>
+        <h3>Se reconoce</h3>
+        <p>Un onboarding de 60 segundos pregunta semestre, modalidad y necesidades.</p>
+      </article>
+      <article class="step">
+        <span class="step-num">03</span>
+        <span class="step-icon"><svg class="icon"><use href="#i-compass"/></svg></span>
+        <h3>Encuentra</h3>
+        <p>Explora por situaciones de la vida o le pregunta a Sami si no sabe qué buscar.</p>
+      </article>
+      <article class="step">
+        <span class="step-num">04</span>
+        <span class="step-icon"><svg class="icon"><use href="#i-calendar"/></svg></span>
+        <h3>Actúa</h3>
+        <p>Ve requisitos, pasos y horarios; agenda en menos de dos minutos.</p>
+      </article>
+      <article class="step">
+        <span class="step-num">05</span>
+        <span class="step-icon"><svg class="icon"><use href="#i-route"/></svg></span>
+        <h3>Continúa</h3>
+        <p>Recibe recordatorios, sigue su ruta y accede al siguiente paso.</p>
+      </article>
+    </div>
+
+    <details class="fold">
+      <summary>
+        <span class="fold-title">Qué cambia para el estudiante</span>
+        <span class="fold-hint">Antes / después <svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg></span>
+      </summary>
+      <div class="compare-wrap">
+        <table class="compare">
+          <thead><tr><th scope="col">Momento</th><th scope="col">Hoy</th><th scope="col">Con Ruta Bienestar</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Cómo encuentra un servicio</th><td>Navega más de 4 clics y adivina la dependencia.</td><td>Un toque por situación, búsqueda o Sami.</td></tr>
+            <tr><th scope="row">Dónde se entera</th><td>Correo masivo, carteleras y voz a voz.</td><td>WhatsApp, QR en inducción y app web.</td></tr>
+            <tr><th scope="row">Qué hace si no entiende</th><td>Pregunta a un amigo o desiste.</td><td>Sami responde 24/7 y deriva a una persona.</td></tr>
+            <tr><th scope="row">Cómo pide la cita</th><td>Correo, teléfono o ventanilla.</td><td>Agenda integrada en menos de 2 minutos.</td></tr>
+            <tr><th scope="row">Qué pasa después</th><td>Sin seguimiento ni recordatorios.</td><td>Recordatorios, Mi ruta y próximo paso claro.</td></tr>
+            <tr><th scope="row">Qué ve Bienestar</th><td>Reportes manuales y demanda no atendida invisible.</td><td>Demanda, búsquedas sin respuesta y capacidad.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <details class="fold">
+      <summary>
+        <span class="fold-title">Cuatro capas, una experiencia simple</span>
+        <span class="fold-hint">Bajo el capó <svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg></span>
+      </summary>
+      <div class="layers">
+        <div class="layer-grid">
+          <article class="layer"><span class="layer-num">A</span><h4>Contenido</h4><p>Fichas estandarizadas, lenguaje claro y revisión semestral con cada coordinación.</p><span class="layer-tag">8 servicios · 1 formato</span></article>
+          <article class="layer"><span class="layer-num">B</span><h4>Conversación</h4><p>IA con base de conocimiento institucional, límites claros y paso a un humano.</p><span class="layer-tag">Sami · IA + RAG</span></article>
+          <article class="layer"><span class="layer-num">C</span><h4>Integración</h4><p>WhatsApp Business, agenda, autenticación y recordatorios en un solo flujo.</p><span class="layer-tag">WhatsApp · calendario</span></article>
+          <article class="layer"><span class="layer-num">D</span><h4>Datos</h4><p>Analítica de eventos y panel agregado para decidir sin vigilar a nadie.</p><span class="layer-tag">Privacidad por diseño</span></article>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ CAMPAÑA ============ -->
+<section class="section section--campaign" id="campana">
+  <div class="container">
+    <div class="campaign-top">
+      <div>
+        <span class="eyebrow eyebrow--light"><span class="pulse-dot pulse-dot--light"></span> Campaña de lanzamiento</span>
+        <h2>No estás solo,<br>estás en la U.</h2>
+      </div>
+      <div class="campaign-intro">
+        <p>El insight: pedir ayuda se percibe como debilidad. La campaña lo reformula como una estrategia académica y humana. Sin estigmas, sin tecnicismos y en el canal donde los estudiantes ya están.</p>
+        <div class="campaign-tags"><span>#TuRutaCuenta</span><span>#PedirAyudaEsEstrategia</span><span>#BienestarUSB</span></div>
+      </div>
+    </div>
+
+    <div class="campaign-grid">
+      <article class="piece piece--post" aria-label="Pieza para Instagram: ¿Sabías que tienes psicología gratis?">
+        <div class="piece-top"><span class="piece-logo"><svg class="logo-mark"><use href="#logo-mark"/></svg> Ruta Bienestar</span><span class="piece-tag">Instagram · 4:5</span></div>
+        <div class="post-art">
+          <span class="post-star"><svg class="icon"><use href="#i-sparkles"/></svg></span>
+          <p class="post-kicker">Servicio gratuito y confidencial</p>
+          <h3>¿Sabías que tienes <em>psicología gratis</em> en tu U?</h3>
+          <p class="post-sub">No tienes que esperar a estar al límite para hablar con alguien.</p>
+          <div class="post-foot"><span>Agenda en Ruta Bienestar</span><span class="round-arrow"><svg class="icon"><use href="#i-arrow-right"/></svg></span></div>
+        </div>
+        <div class="post-route" aria-hidden="true"><span></span><span></span><span></span></div>
+      </article>
+
+      <article class="piece piece--story" aria-label="Historia para Instagram: Pedir ayuda también es una estrategia académica">
+        <div class="piece-top"><span class="piece-logo"><svg class="logo-mark"><use href="#logo-mark"/></svg></span><span class="piece-tag">Historia · 9:16</span></div>
+        <div class="story-art">
+          <p class="story-kicker">Tu bienestar también es académico</p>
+          <h3>Pedir ayuda también es una <em>estrategia</em>.</h3>
+          <p class="story-sub">8 de cada 10 estudiantes no saben que su U tiene apoyo psicológico gratuito. Tú ya lo sabes.</p>
+          <span class="story-cta">Desliza para conocer tu ruta <svg class="icon"><use href="#i-arrow-right"/></svg></span>
+        </div>
+        <div class="story-bars" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+      </article>
+
+      <article class="piece piece--wa" aria-label="Simulación de conversación de WhatsApp con Ruta Bienestar">
+        <div class="piece-top"><span class="piece-logo piece-logo--wa"><svg class="icon"><use href="#i-whatsapp"/></svg> WhatsApp</span><span class="piece-tag">Mensaje · 1:1</span></div>
+        <div class="wa-shell">
+          <div class="wa-head"><span class="wa-avatar"><svg class="logo-mark"><use href="#logo-mark"/></svg></span><div><strong>Bienestar USB</strong><small>En línea</small></div><svg class="icon wa-icon"><use href="#i-video"/></svg></div>
+          <div class="wa-body">
+            <div class="wa-day">Hoy</div>
+            <div class="wa-bubble wa-bubble--in">Hola, soy <strong>Sami</strong>, tu asistente de Bienestar. ¿En qué te puedo ayudar hoy?<span class="wa-time">9:41</span></div>
+            <div class="wa-bubble wa-bubble--in wa-bubble--soft"><strong>Puedes elegir una opción:</strong><span class="wa-option">1. Encontrar un servicio</span><span class="wa-option">2. Agendar una cita</span><span class="wa-option">3. Hablar con una persona</span></div>
+            <div class="wa-bubble wa-bubble--out">Quiero agendar con psicología<span class="wa-time">9:42 <svg class="icon"><use href="#i-check"/></svg><svg class="icon"><use href="#i-check"/></svg></span></div>
+            <div class="wa-bubble wa-bubble--in">Perfecto. Tengo cupos mañana a las 10:00 a. m. y a las 3:30 p. m. ¿Cuál prefieres?<span class="wa-time">9:42</span></div>
+            <div class="wa-typing"><i></i><i></i><i></i><span>escribiendo…</span></div>
+          </div>
+          <div class="wa-input"><span>Escribe un mensaje…</span><svg class="icon"><use href="#i-send"/></svg></div>
+        </div>
+      </article>
+
+      <article class="piece piece--poster" aria-label="Afiche para inducción: Tu primer semestre, con red">
+        <div class="piece-top"><span class="piece-logo piece-logo--dark"><svg class="logo-mark"><use href="#logo-mark"/></svg> Inducción</span><span class="piece-tag piece-tag--dark">Afiche · campus</span></div>
+        <div class="poster-art">
+          <p class="poster-kicker">Tu primer semestre</p>
+          <h3>con <em>red</em>.</h3>
+          <ul class="poster-list">
+            <li><svg class="icon"><use href="#i-check"/></svg> Asesoría académica</li>
+            <li><svg class="icon"><use href="#i-check"/></svg> Apoyo psicológico</li>
+            <li><svg class="icon"><use href="#i-check"/></svg> Becas y auxilios</li>
+          </ul>
+          <div class="poster-qr"><svg class="icon"><use href="#i-qr"/></svg><span>Escanea y activa tu ruta</span></div>
+        </div>
+      </article>
+    </div>
+
+    <details class="fold fold--dark">
+      <summary>
+        <span class="fold-title">Cómo se activa en el campus</span>
+        <span class="fold-hint">4 fases <svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg></span>
+      </summary>
+      <div class="phases">
+        <article class="phase"><span class="phase-week">Semana 1</span><h4>Expectativa</h4><p>Preguntas en pantallas y redes: “¿Sabes dónde pedir ayuda?”. Sin explicar todavía.</p><span class="phase-channel">Pantallas · Instagram</span></article>
+        <article class="phase"><span class="phase-week">Semana 2</span><h4>Lanzamiento</h4><p>Video de 30 s, carrusel de servicios y activación de WhatsApp con Sami.</p><span class="phase-channel">Reels · WhatsApp</span></article>
+        <article class="phase"><span class="phase-week">Semanas 3–4</span><h4>Activación</h4><p>QR en inducción, embajadores por facultad y reto “conoce 3 servicios”.</p><span class="phase-channel">Campus · QR</span></article>
+        <article class="phase"><span class="phase-week">Continuo</span><h4>Sostenimiento</h4><p>Ruta del mes, historias de estudiantes y recordatorios de fechas clave.</p><span class="phase-channel">Testimonios · push</span></article>
+      </div>
+    </details>
+
+    <div class="campaign-note">
+      <svg class="icon"><use href="#i-quote"/></svg>
+      <p>“No se trata de decirle al estudiante que pida ayuda, sino de quitarle las excusas para encontrarla.”</p>
+      <span>Principio de diseño de la campaña</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IMPACTO ============ -->
+<section class="section section--impact" id="impacto">
+  <div class="container">
+    <div class="section-heading section-heading--split">
+      <div>
+        <span class="eyebrow eyebrow--dark">Medición</span>
+        <h2>Medir para<br>acompañar mejor.</h2>
+      </div>
+      <p>La métrica principal no es cuántas personas abren la app, sino cuántas llegan al servicio que necesitan. El panel convierte la demanda silenciosa en decisiones de capacidad y comunicación.</p>
+    </div>
+
+    <div class="dashboard">
+      <div class="dash-head">
+        <div class="dash-brand"><span class="dash-mark"><svg class="logo-mark"><use href="#logo-mark"/></svg></span><div><strong>Panel Bienestar</strong><span>Vista de coordinación · Piloto 2 programas</span></div></div>
+        <div class="dash-actions"><span class="demo-pill"><span></span> Datos simulados</span><span class="dash-period">Últimos 30 días <svg class="icon"><use href="#i-chevron-right"/></svg></span></div>
+      </div>
+
+      <div class="dash-kpis">
+        <article class="kpi"><span class="kpi-label">Estudiantes activos</span><strong>1.284</strong><span class="kpi-trend kpi-trend--up">+18% vs. mes anterior</span></article>
+        <article class="kpi"><span class="kpi-label">Encontró lo que buscaba</span><strong>68<span>%</span></strong><span class="kpi-trend kpi-trend--up">+21 pp desde el lanzamiento</span></article>
+        <article class="kpi"><span class="kpi-label">Tiempo medio de búsqueda</span><strong>2:10<span> min</span></strong><span class="kpi-trend kpi-trend--up">Antes: más de 4 clics</span></article>
+        <article class="kpi"><span class="kpi-label">Citas agendadas</span><strong>412</strong><span class="kpi-trend kpi-trend--up">+37% vs. semestre anterior</span></article>
+        <article class="kpi"><span class="kpi-label">Asistencia a citas</span><strong>84<span>%</span></strong><span class="kpi-trend">Meta: 85%</span></article>
+        <article class="kpi kpi--alert"><span class="kpi-label">Demanda silenciosa</span><strong>23<span>%</span></strong><span class="kpi-trend">Búsquedas sin resultado</span></article>
+      </div>
+
+      <details class="fold fold--panel">
+        <summary>
+          <span class="fold-title">Ver detalle del panel</span>
+          <span class="fold-hint">Demanda y capacidad <svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg></span>
+        </summary>
+      <div class="dash-grid">
+        <article class="dash-card">
+          <div class="dash-card-head"><div><span class="mini-label">Demanda</span><h3>¿Qué está buscando el estudiante?</h3></div><span class="dash-chip">Por momento de vida</span></div>
+          <div class="bars">
+            <div class="bar-row"><span>Académico</span><div class="bar-track"><i style="width:38%"></i></div><strong>38%</strong></div>
+            <div class="bar-row"><span>Emocional</span><div class="bar-track"><i style="width:27%;background:#079AA4"></i></div><strong>27%</strong></div>
+            <div class="bar-row"><span>Económico</span><div class="bar-track"><i style="width:18%;background:#FFB91B"></i></div><strong>18%</strong></div>
+            <div class="bar-row"><span>Profesional</span><div class="bar-track"><i style="width:11%;background:#548BC5"></i></div><strong>11%</strong></div>
+            <div class="bar-row"><span>Emprender</span><div class="bar-track"><i style="width:6%;background:#94C34B"></i></div><strong>6%</strong></div>
+          </div>
+          <p class="dash-note"><svg class="icon"><use href="#i-info"/></svg> El 65% de las consultas empieza por una situación, no por el nombre del servicio.</p>
+        </article>
+
+        <article class="dash-card">
+          <div class="dash-card-head"><div><span class="mini-label">Oportunidad</span><h3>Búsquedas sin respuesta</h3></div><span class="dash-chip dash-chip--warn">Revisar</span></div>
+          <ul class="zero-list">
+            <li><span>“monitoria de cálculo”</span><strong>34</strong><button aria-label="Crear ficha de monitoria de cálculo">+</button></li>
+            <li><span>“apoyo con alimentación”</span><strong>27</strong><button aria-label="Crear ficha de apoyo con alimentación">+</button></li>
+            <li><span>“práctica profesional”</span><strong>21</strong><button aria-label="Crear ficha de práctica profesional">+</button></li>
+            <li><span>“transporte”</span><strong>19</strong><button aria-label="Crear ficha de transporte">+</button></li>
+          </ul>
+          <p class="dash-note"><svg class="icon"><use href="#i-target"/></svg> Cada búsqueda sin respuesta es una necesidad real que hoy no tiene ficha.</p>
+        </article>
+
+        <article class="dash-card">
+          <div class="dash-card-head"><div><span class="mini-label">Reconocimiento</span><h3>Antes y después del piloto</h3></div><span class="dash-chip">Meta +30 pp</span></div>
+          <div class="aware-list">
+            <div class="aware"><div class="aware-label"><span>Asesoría académica</span><small>31% → <strong>61%</strong></small></div><div class="aware-track"><i style="width:31%"></i><b style="left:31%;width:30%"></b></div></div>
+            <div class="aware"><div class="aware-label"><span>Becas y auxilios</span><small>24% → <strong>54%</strong></small></div><div class="aware-track"><i style="width:24%"></i><b style="left:24%;width:30%"></b></div></div>
+            <div class="aware"><div class="aware-label"><span>Apoyo psicológico</span><small>29% → <strong>59%</strong></small></div><div class="aware-track"><i style="width:29%"></i><b style="left:29%;width:30%"></b></div></div>
+          </div>
+          <div class="legend"><span><i></i> Antes</span><span><b></b> Ganancia del piloto</span></div>
+        </article>
+      </div>
+
+      <div class="dash-table-wrap">
+        <div class="dash-card-head"><div><span class="mini-label">Capacidad</span><h3>Demanda vs. cupos por servicio</h3></div><span class="dash-chip">Semestre 2026-2</span></div>
+        <table class="dash-table">
+          <thead><tr><th>Servicio</th><th>Solicitudes</th><th>Cupos</th><th>Espera</th><th>Estado</th></tr></thead>
+          <tbody>
+            <tr><td>Asesoría académica</td><td>186</td><td>240</td><td>4 días</td><td><span class="status status--ok">Con cupo</span></td></tr>
+            <tr><td>Apoyo psicológico</td><td>142</td><td>180</td><td>2 días</td><td><span class="status status--ok">Con cupo</span></td></tr>
+            <tr><td>Becas y auxilios</td><td>98</td><td>—</td><td>1 día</td><td><span class="status status--info">Sin cupo</span></td></tr>
+            <tr><td>Orientación profesional</td><td>64</td><td>90</td><td>3 días</td><td><span class="status status--ok">Con cupo</span></td></tr>
+            <tr><td>Emprendimiento</td><td>31</td><td>40</td><td>5 días</td><td><span class="status status--warn">Reforzar</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="privacy-note"><svg class="icon"><use href="#i-shield"/></svg> El panel muestra datos agregados. Nunca expone conversaciones, diagnósticos ni identidad de estudiantes. Acceso por roles y consentimiento informado.</p>
+      </details>
+    </div>
+
+    <details class="fold">
+      <summary>
+        <span class="fold-title">Indicadores del piloto</span>
+        <span class="fold-hint">Alcance, conexión y experiencia <svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg></span>
+      </summary>
+    <div class="measure-grid">
+      <article class="measure"><span class="measure-icon"><svg class="icon"><use href="#i-megaphone"/></svg></span><h3>Alcance</h3><ul><li>60% de nuevos completa el onboarding en 2 semanas.</li><li>Paridad ±10% entre modalidad presencial y virtual.</li><li>50% de estudiantes con beca activa usa la app.</li></ul></article>
+      <article class="measure"><span class="measure-icon"><svg class="icon"><use href="#i-route"/></svg></span><h3>Conexión</h3><ul><li>Encontrar un servicio en menos de 2 minutos.</li><li>70% de consultas resueltas por Sami sin humano.</li><li>+40% de citas agendadas; menos de 15% de inasistencia.</li></ul></article>
+      <article class="measure"><span class="measure-icon"><svg class="icon"><use href="#i-heart"/></svg></span><h3>Experiencia</h3><ul><li>Satisfacción ≥ 4,2 / 5 en la atención recibida.</li><li>80% declara sentirse más seguro para pedir ayuda.</li><li>Cero barreras críticas de accesibilidad WCAG 2.1 AA.</li></ul></article>
+    </div>
+    </details>
+
+    <div class="north-star">
+      <div><span class="tag-label tag-label--light">Métrica principal</span><h3>Tasa de conexión efectiva</h3><p>Estudiantes que llegan a un servicio después de expresar una necesidad / estudiantes que expresan una necesidad.</p></div>
+      <div class="north-target"><strong>45%</strong><span>meta del piloto</span><small>Hoy no se mide</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INSTALAR ============ -->
+<section class="section section--install" id="instalar">
+  <div class="container install-band">
+    <div class="install-copy">
+      <span class="eyebrow eyebrow--dark">Opcional</span>
+      <h2>Llévala contigo.</h2>
+      <p class="lead-sm">Úsala desde el navegador cuando quieras. Si la instalas, abre como una app y guarda lo esencial para consultarlo sin conexión.</p>
+      <div class="install-actions">
+        <button class="btn btn-primary" type="button" data-install-accept>
+          <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+          Instalar aplicación
+        </button>
+        <button class="btn btn-secondary" type="button" data-install-help>¿Cómo se instala?</button>
+      </div>
+      <p class="install-note"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg> Sin tiendas ni descargas obligatorias. Puedes omitirla y seguir usando la web.</p>
+    </div>
+    <ol class="install-steps">
+      <li><span>1</span><div><strong>Abre el enlace</strong><small>En Chrome, Edge o Safari.</small></div></li>
+      <li><span>2</span><div><strong>Toca «Instalar»</strong><small>O «Añadir a pantalla de inicio».</small></div></li>
+      <li><span>3</span><div><strong>Ábrela como app</strong><small>Desde el ícono, sin escribir la dirección.</small></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ ENTREGABLE 2 ============ -->
+<section class="section section--white" id="entregable">
+  <div class="container entregable-grid">
+    <div class="entregable-copy">
+      <span class="eyebrow eyebrow--dark">Entregable 2</span>
+      <h2>Ficha del prototipo</h2>
+      <p class="lead-sm">Un borrador funcional y visual que permite recorrer la propuesta completa: desde el primer contacto hasta la cita y el seguimiento.</p>
+      <dl class="ficha">
+        <div><dt>Problema que resuelve</dt><dd>Los servicios de apoyo existen, pero los estudiantes no saben que están ahí, cómo se llaman ni cómo acceder a ellos.</dd></div>
+        <div><dt>Público</dt><dd>Estudiantes de la Universidad Simón Bolívar, con énfasis en primer semestre, modalidad virtual y estudiantes con vulnerabilidad económica o emocional.</dd></div>
+        <div><dt>Cómo funciona</dt><dd>Onboarding de 60 s → exploración por situaciones → ficha clara → Sami si hay dudas → agenda integrada → recordatorios y Mi ruta.</dd></div>
+        <div><dt>Herramientas</dt><dd>HTML5, CSS3 y JavaScript; tipografías locales; SVG; localStorage. En producción: PWA, WhatsApp Business API, IA con RAG, agenda y analítica.</dd></div>
+        <div><dt>Qué aporta de diferente</dt><dd>No es otra página informativa: organiza por momentos de vida, responde 24/7, agenda, acompaña y convierte la demanda silenciosa en decisiones.</dd></div>
+      </dl>
+      <div class="ficha-actions">
+        <a class="btn btn-primary btn-sm" href="Entregable%202%20-%20Ficha%20del%20Prototipo.pdf" download>
+          <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Descargar ficha (PDF)
+        </a>
+        <a class="btn btn-secondary btn-sm" href="Parcial%202%20-%20Ruta%20Bienestar.pdf" download>
+          <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Documento del parcial (PDF)
+        </a>
+      </div>
+    </div>
+
+    <aside class="open-card">
+      <div class="open-head"><span class="open-icon"><svg class="icon"><use href="#i-play"/></svg></span><div><span class="mini-label">Cómo usarla</span><h3>Desde cualquier navegador</h3></div></div>
+      <ol class="open-steps">
+        <li><span>1</span><p>Abre el enlace público en tu celular o computador.</p></li>
+        <li><span>2</span><p>Recorre Inicio, Explorar y Sami sin crear cuenta.</p></li>
+        <li><span>3</span><p>Agenda una cita de prueba y revísala en Mi ruta.</p></li>
+        <li><span>4</span><p>Si quieres, instálala desde el menú del navegador.</p></li>
+      </ol>
+      <div class="open-tech">
+        <span class="mini-label">Hecho con</span>
+        <div class="tech-chips"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>SVG</span><span>LocalStorage</span></div>
+      </div>
+      <div class="palette">
+        <span class="mini-label">Paleta institucional</span>
+        <div class="swatches">
+          <span class="swatch" style="--sw:#09843B" title="#09843B"><i></i>09843B</span>
+          <span class="swatch" style="--sw:#006341" title="#006341"><i></i>006341</span>
+          <span class="swatch" style="--sw:#AED6C6" title="#AED6C6"><i></i>AED6C6</span>
+          <span class="swatch" style="--sw:#94C34B" title="#94C34B"><i></i>94C34B</span>
+          <span class="swatch" style="--sw:#FFB91B" title="#FFB91B"><i></i>FFB91B</span>
+          <span class="swatch" style="--sw:#FBF7D7" title="#FBF7D7"><i></i>FBF7D7</span>
+          <span class="swatch" style="--sw:#079AA4" title="#079AA4"><i></i>079AA4</span>
+          <span class="swatch" style="--sw:#548BC5" title="#548BC5"><i></i>548BC5</span>
+        </div>
+      </div>
+      <p class="open-note"><svg class="icon"><use href="#i-info"/></svg> Los datos, citas y respuestas de Sami son simulados con fines académicos. No hay conexión con sistemas institucionales reales.</p>
+    </aside>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg class="logo-mark"><use href="#logo-mark"/></svg>
+      <div><strong>Ruta Bienestar</strong><span>El apoyo de la U, a un toque.</span></div>
+    </div>
+    <div class="footer-col">
+      <span class="footer-label">Proyecto</span>
+      <p>Parcial 2 · Propuesta y prototipo</p>
+      <p>Electiva Complementaria I: Comunicación e Innovación Digital</p>
+    </div>
+    <div class="footer-col">
+      <span class="footer-label">Equipo</span>
+      <p>Julieth Cubides · Miguel Castaño</p>
+      <p>Joseph Pérez · Jeannys Bautista</p>
+    </div>
+    <div class="footer-col">
+      <span class="footer-label">Institución</span>
+      <p>Universidad Simón Bolívar</p>
+      <p>Sede Cúcuta · 2026</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Profesor Alexander Calero</span>
+    <span>Prototipo académico · Datos simulados</span>
+    <a href="#top">Volver arriba <svg class="icon"><use href="#i-arrow-right"/></svg></a>
+  </div>
+</footer>
+
+<!-- ============ INSTALACIÓN OPCIONAL ============ -->
+<aside class="install-prompt" id="installPrompt" hidden>
+  <span class="install-prompt-icon"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg></span>
+  <div class="install-prompt-copy">
+    <strong>Ten Ruta Bienestar a mano</strong>
+    <span>Instálala en tu celular. Es opcional.</span>
+  </div>
+  <button class="install-prompt-accept" type="button" data-install-accept>Instalar</button>
+  <button class="install-prompt-close" type="button" data-install-dismiss aria-label="Omitir la instalación">
+    <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+  </button>
+</aside>
+
+<div class="install-backdrop" id="installBackdrop" hidden></div>
+<aside class="install-sheet" id="installSheet" role="dialog" aria-modal="true" aria-labelledby="installSheetTitle" aria-hidden="true" inert>
+  <div class="sheet-handle"></div>
+  <div class="install-sheet-head">
+    <div><p class="kicker">Instalación opcional</p><h3 id="installSheetTitle">Añádela a tu pantalla</h3></div>
+    <button class="icon-btn" type="button" data-install-close aria-label="Cerrar guía de instalación">
+      <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
+  </div>
+  <div class="install-guide">
+    <div class="install-guide-block" data-guide="ios">
+      <strong>iPhone o iPad · Safari</strong>
+      <ol>
+        <li>Toca el botón <b>Compartir</b>.</li>
+        <li>Elige <b>Añadir a pantalla de inicio</b>.</li>
+        <li>Confirma con <b>Añadir</b>.</li>
+      </ol>
+    </div>
+    <div class="install-guide-block" data-guide="android">
+      <strong>Android · Chrome o Edge</strong>
+      <ol>
+        <li>Abre el menú <b>⋮</b> del navegador.</li>
+        <li>Elige <b>Instalar aplicación</b>.</li>
+        <li>Confirma con <b>Instalar</b>.</li>
+      </ol>
+    </div>
+    <div class="install-guide-block" data-guide="desktop">
+      <strong>Computador · Chrome o Edge</strong>
+      <ol>
+        <li>Busca el ícono de instalar en la barra de direcciones.</li>
+        <li>O abre el menú y elige <b>Instalar Ruta Bienestar</b>.</li>
+        <li>Confirma con <b>Instalar</b>.</li>
+      </ol>
+    </div>
+  </div>
+  <p class="install-sheet-note"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg> La web sigue funcionando igual sin instalarla. Puedes cerrar esta guía cuando quieras.</p>
+</aside>
+
+<a class="app-exit" href="./" aria-label="Salir del modo aplicación">
+  <svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg>
+  Volver a la web
+</a>
+
+<!-- ============ MODO DEMO ============ -->
+<button class="demo-exit" id="demoExit" data-action="exit-demo"><svg class="icon"><use href="#i-close"/></svg> Salir del demo <kbd>Esc</kbd></button>
+<div class="demo-dock" id="demoDock" aria-label="Navegación rápida del demo">
+  <span class="dock-label">Ir a</span>
+  <button data-screen="home">Inicio</button>
+  <button data-screen="explorar">Explorar</button>
+  <button data-screen="sami">Sami</button>
+  <button data-screen="detalle">Servicio</button>
+  <button data-screen="agendar">Agendar</button>
+  <button data-screen="ruta">Mi ruta</button>
+  <button data-screen="onboarding">Onboarding</button>
+  <button class="dock-reset" data-action="reset-demo" title="Reiniciar demo"><svg class="icon"><use href="#i-refresh"/></svg></button>
+</div>
+
+<script src="assets/services.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/pwa.js"></script>
+</body>
+</html>

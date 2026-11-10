@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Ruta Bienestar">
+  <rect width="48" height="48" rx="14" fill="#09843B"/>
+  <path d="M14.5 34c0-6.4 6.2-6.4 6.2-12.4s6.2-6 6.2-9.6" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round"/>
+  <circle cx="34" cy="14" r="3.7" fill="#FFB91B"/>
+  <circle cx="14.5" cy="34" r="2.1" fill="#AED6C6"/>
+</svg>

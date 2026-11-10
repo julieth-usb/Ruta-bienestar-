@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Entregable 2 · Ficha del prototipo · Ruta Bienestar</title>
+<style>
+@font-face {
+  font-family: "Fraunces";
+  src: url("fonts/Fraunces-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("fonts/PlusJakartaSans-latin.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+}
+@page { size: Letter; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #fff; }
+body {
+  font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  font-size: 8.6pt;
+  line-height: 1.42;
+  color: #1b2620;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.page {
+  height: 9in;
+  display: flex;
+  flex-direction: column;
+  page-break-after: always;
+}
+.page:last-child { page-break-after: auto; }
+
+/* ---------- Cabecera ---------- */
+.topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #DCE8E0;
+}
+.brandline { display: flex; align-items: center; gap: 9px; }
+.brandline svg { width: 34px; height: 34px; }
+.brandline strong {
+  display: block;
+  font-size: 8pt;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+  color: #006341;
+  line-height: 1.25;
+}
+.brandline span {
+  display: block;
+  font-size: 6.8pt;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #6b7a70;
+  margin-top: 2px;
+}
+.top-tag {
+  font-size: 7pt;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #087E86;
+  padding: 5px 10px;
+  border: 1px solid #AED6C6;
+  border-radius: 999px;
+  background: #F7FBF8;
+  white-space: nowrap;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  gap: 22px;
+  padding: 16px 0 10px;
+  align-items: end;
+}
+.hero h1 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 40pt;
+  line-height: .92;
+  letter-spacing: -.02em;
+  color: #006341;
+  margin: 0 0 4px;
+  font-weight: 650;
+}
+.hero .tagline {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 13pt;
+  font-style: italic;
+  color: #09843B;
+  margin: 0 0 8px;
+}
+.hero .sub {
+  font-size: 8.6pt;
+  color: #4c5a52;
+  max-width: 3.9in;
+  margin: 0;
+}
+.hero-card {
+  background: #09843B;
+  color: #fff;
+  border-radius: 16px;
+  padding: 14px 16px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-card::after {
+  content: "";
+  position: absolute;
+  right: -34px;
+  bottom: -48px;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.08);
+}
+.hero-card span {
+  display: block;
+  font-size: 6.5pt;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #BFE8D2;
+  margin-bottom: 5px;
+}
+.hero-card strong {
+  display: block;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 13pt;
+  line-height: 1.2;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.hero-card p {
+  font-size: 7.4pt;
+  line-height: 1.45;
+  color: #EAF7EF;
+  margin: 0;
+}
+.hero-card b { color: #FFD66B; }
+
+/* ---------- Meta ---------- */
+.meta {
+  display: grid;
+  grid-template-columns: 1.25fr 1.25fr .8fr;
+  gap: 12px;
+  padding: 9px 0;
+  border-top: 1px solid #DCE8E0;
+  border-bottom: 1px solid #DCE8E0;
+}
+.meta span {
+  display: block;
+  font-size: 6.2pt;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #079AA4;
+  margin-bottom: 3px;
+}
+.meta p { margin: 0; font-size: 7.6pt; line-height: 1.4; color: #26332b; }
+
+/* ---------- Bloques ---------- */
+.section { padding-top: 11px; }
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 7px;
+}
+.section-head .num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #E8F3EC;
+  color: #006341;
+  font-size: 7pt;
+  font-weight: 800;
+  flex: 0 0 17px;
+}
+.section-head h2 {
+  font-size: 9.4pt;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color: #006341;
+  margin: 0;
+  font-weight: 800;
+}
+.section-head .rule {
+  flex: 1;
+  height: 1px;
+  background: #DCE8E0;
+}
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+p { margin: 0 0 6px; }
+p:last-child { margin-bottom: 0; }
+.lead { font-size: 8.8pt; line-height: 1.5; }
+.muted { color: #5a665f; }
+strong { color: #102018; }
+
+.data-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+.data {
+  background: #F7FBF8;
+  border: 1px solid #DCE8E0;
+  border-radius: 9px;
+  padding: 7px 8px;
+}
+.data strong {
+  display: block;
+  font-size: 14pt;
+  line-height: 1;
+  color: #09843B;
+  margin-bottom: 2px;
+  font-weight: 800;
+}
+.data span { display: block; font-size: 6.6pt; line-height: 1.3; color: #4c5a52; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+.chip {
+  font-size: 6.7pt;
+  font-weight: 700;
+  color: #005533;
+  background: #E8F3EC;
+  border: 1px solid #CBE3D5;
+  border-radius: 999px;
+  padding: 3px 7px;
+}
+
+/* ---------- Pasos ---------- */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 7px;
+  margin-top: 4px;
+}
+.step {
+  background: #fff;
+  border: 1px solid #DCE8E0;
+  border-top: 3px solid #09843B;
+  border-radius: 8px;
+  padding: 8px 8px 7px;
+}
+.step b {
+  display: block;
+  font-size: 7.6pt;
+  color: #006341;
+  margin-bottom: 2px;
+}
+.step p { font-size: 6.8pt; line-height: 1.35; color: #3f4c44; margin: 0; }
+.step .n {
+  display: inline-block;
+  font-size: 6pt;
+  font-weight: 800;
+  letter-spacing: .08em;
+  color: #079AA4;
+  margin-bottom: 3px;
+}
+
+/* ---------- Cajas ---------- */
+.box {
+  border: 1px solid #DCE8E0;
+  border-radius: 10px;
+  padding: 9px 11px;
+  background: #fff;
+}
+.box--mint { background: #F7FBF8; }
+.box--gold { background: #FBF7D7; border-color: #E9E2A8; }
+.box--sky { background: #F0F7FB; border-color: #C9E1EE; }
+.box h3 {
+  font-size: 8pt;
+  color: #006341;
+  margin: 0 0 4px;
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.box p, .box li { font-size: 7.3pt; line-height: 1.4; color: #35433b; }
+.box ul { margin: 3px 0 0; padding-left: 13px; }
+.box li { margin-bottom: 2px; }
+
+.tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+.tech-chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+.tech-chips span {
+  font-size: 6.4pt;
+  font-weight: 700;
+  color: #075293;
+  background: #EAF3F9;
+  border: 1px solid #C9DFED;
+  border-radius: 5px;
+  padding: 3px 6px;
+}
+.tech-chips span.prod { color: #005533; background: #E8F3EC; border-color: #CBE3D5; }
+
+/* ---------- Página 2 ---------- */
+.diff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+.diff {
+  border: 1px solid #DCE8E0;
+  border-radius: 10px;
+  padding: 9px 10px;
+  background: #fff;
+}
+.diff .k {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #FFB91B;
+  color: #3a2a00;
+  font-size: 6.5pt;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+.diff h3 { font-size: 8pt; color: #006341; margin: 0 0 3px; font-weight: 800; }
+.diff p { font-size: 7.2pt; line-height: 1.4; color: #35433b; margin: 0; }
+
+.status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+.status { border-radius: 10px; padding: 9px 11px; }
+.status--ok { background: #F0F8F3; border: 1px solid #CBE3D5; }
+.status--sim { background: #FBF7D7; border: 1px solid #E9E2A8; }
+.status h3 { font-size: 7.8pt; margin: 0 0 4px; color: #006341; text-transform: uppercase; letter-spacing: .05em; }
+.status ul { list-style: none; margin: 0; padding: 0; }
+.status li { position: relative; padding-left: 12px; font-size: 7.1pt; line-height: 1.38; margin-bottom: 2px; color: #35433b; }
+.status li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #09843B;
+}
+.status--sim li::before { background: #FFB91B; }
+
+.open-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.open-step {
+  display: flex;
+  gap: 7px;
+  align-items: flex-start;
+  padding: 8px 9px;
+  border: 1px solid #DCE8E0;
+  border-radius: 9px;
+  background: #fff;
+}
+.open-step b {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #09843B;
+  color: #fff;
+  font-size: 6.8pt;
+  flex: 0 0 17px;
+}
+.open-step p { font-size: 7pt; line-height: 1.35; margin: 0; color: #35433b; }
+
+.flow-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; }
+.flow-chips span {
+  font-size: 6.6pt;
+  font-weight: 600;
+  color: #26332b;
+  background: #F4F8F5;
+  border: 1px solid #DCE8E0;
+  border-radius: 999px;
+  padding: 3px 7px;
+}
+
+.timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.tl {
+  border-left: 3px solid #FFB91B;
+  padding: 2px 0 2px 9px;
+}
+.tl span {
+  display: block;
+  font-size: 6.2pt;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #079AA4;
+  margin-bottom: 2px;
+}
+.tl b { display: block; font-size: 7.6pt; color: #006341; margin-bottom: 2px; }
+.tl p { font-size: 6.9pt; line-height: 1.35; color: #4c5a52; margin: 0; }
+
+.quote {
+  margin-top: auto;
+  background: #006341;
+  color: #fff;
+  border-radius: 12px;
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.quote p {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 11.5pt;
+  font-style: italic;
+  line-height: 1.25;
+  margin: 0;
+  max-width: 5.3in;
+}
+.quote span {
+  font-size: 6.4pt;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #BFE8D2;
+  white-space: nowrap;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid #DCE8E0;
+  font-size: 6.3pt;
+  letter-spacing: .04em;
+  color: #6b7a70;
+}
+.footer b { color: #09843B; }
+</style>
+</head>
+<body>
+
+<!-- ================= PÁGINA 1 ================= -->
+<section class="page">
+  <div class="topline">
+    <div class="brandline">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#09843B"/><path d="M14.5 34c0-6.4 6.2-6.4 6.2-12.4s6.2-6 6.2-9.6" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/><circle cx="34" cy="14" r="3.7" fill="#FFB91B"/><circle cx="14.5" cy="34" r="2.1" fill="#AED6C6"/></svg>
+      <div><strong>Universidad Simón Bolívar</strong><span>Sede Cúcuta · Comunicación e Innovación Digital</span></div>
+    </div>
+    <span class="top-tag">Entregable 2 · Prototipo</span>
+  </div>
+
+  <div class="hero">
+    <div>
+      <h1>Ruta Bienestar</h1>
+      <p class="tagline">El apoyo de la U, a un toque.</p>
+      <p class="sub">Ficha del prototipo: una capa de comunicación y acceso que conecta a los estudiantes con los servicios de apoyo que ya existen, en el momento en que los necesitan.</p>
+    </div>
+    <div class="hero-card">
+      <span>La idea en una frase</span>
+      <strong>No es otra página de servicios: es la ruta para llegar a ellos.</strong>
+      <p>Organiza la oferta por <b>situaciones de vida</b>, responde 24/7 y cierra el ciclo con <b>agenda y seguimiento</b>.</p>
+    </div>
+  </div>
+
+  <div class="meta">
+    <div><span>Autores</span><p>Julieth Cubides · Miguel Castaño<br>Joseph Pérez · Jeannys Bautista</p></div>
+    <div><span>Curso y docente</span><p>Electiva Complementaria I<br>Profesor Alexander Calero</p></div>
+    <div><span>Fecha</span><p>27 de octubre de 2026</p></div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><span class="num">1</span><h2>Problema que busca solucionar</h2><span class="rule"></span></div>
+    <div class="two-col">
+      <div>
+        <p class="lead">Los servicios de apoyo estudiantil existen y son gratuitos, pero el estudiante no sabe que están ahí, cómo se llaman ni cómo acceder. La información está dispersa, se nombra en lenguaje institucional y exige navegar más de cuatro clics.</p>
+        <p class="muted">El resultado: capacidad subutilizada, estudiantes que desisten y una demanda que no se mide. No es un problema de oferta; es un problema de comunicación, navegación y confianza.</p>
+      </div>
+      <div class="data-grid">
+        <div class="data"><strong>68,9 %</strong><span>no ubica la asesoría académica</span></div>
+        <div class="data"><strong>75,6 %</strong><span>desconoce cómo pedir becas</span></div>
+        <div class="data"><strong>71,1 %</strong><span>no sabe que la psicología es gratuita</span></div>
+        <div class="data"><strong>81 %</strong><span>de nuevos sin inducción clara</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><span class="num">2</span><h2>Público al que está dirigida</h2><span class="rule"></span></div>
+    <div class="two-col">
+      <div>
+        <p><strong>Prioridad:</strong> estudiantes de primero y segundo semestre, modalidad virtual, con vulnerabilidad económica o emocional, y quienes no conocen la estructura de la universidad.</p>
+        <div class="chips">
+          <span class="chip">Primer semestre</span>
+          <span class="chip">Modalidad virtual</span>
+          <span class="chip">Becas y auxilios</span>
+          <span class="chip">Bienestar emocional</span>
+          <span class="chip">Accesibilidad</span>
+        </div>
+      </div>
+      <div>
+        <p><strong>Usuarios secundarios:</strong> equipos de Bienestar, psicología, asesoría académica y becas; coordinaciones que necesitan ver demanda agregada y capacidad real.</p>
+        <p class="muted">La propuesta prioriza a quien tiene menos tiempo, menos conectividad o menos capital social para navegar la institución.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><span class="num">3</span><h2>Cómo funciona</h2><span class="rule"></span></div>
+    <div class="steps">
+      <div class="step"><span class="n">01 · LLEGA</span><b>Sin fricción</b><p>WhatsApp, QR en la inducción, redes o portal. Sin descargar nada.</p></div>
+      <div class="step"><span class="n">02 · SE RECONOCE</span><b>60 segundos</b><p>Semestre, modalidad, facultad y necesidades. Puede omitirlo.</p></div>
+      <div class="step"><span class="n">03 · ENCUENTRA</span><b>Por situación</b><p>Explora por lo que le pasa o le pregunta a Sami.</p></div>
+      <div class="step"><span class="n">04 · ACTÚA</span><b>Agenda</b><p>Requisitos, día, hora y modalidad. Cita en menos de 2 minutos.</p></div>
+      <div class="step"><span class="n">05 · CONTINÚA</span><b>Mi ruta</b><p>Recordatorios, reprogramación y siguiente paso claro.</p></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><span class="num">4</span><h2>Herramientas y tecnologías</h2><span class="rule"></span></div>
+    <div class="tech-grid">
+      <div class="box box--mint">
+        <h3>Prototipo entregado</h3>
+        <p>HTML5, CSS3 y JavaScript sin dependencias; SVG para íconos y logo; tipografías locales; <strong>localStorage</strong> para persistir citas y guardados; diseño responsive mobile-first.</p>
+        <div class="tech-chips"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>SVG</span><span>LocalStorage</span></div>
+      </div>
+      <div class="box box--sky">
+        <h3>Producción propuesta</h3>
+        <p>PWA + WhatsApp Business API; IA con RAG sobre contenido institucional validado; agenda y recordatorios; analítica de eventos; autenticación institucional y panel por roles.</p>
+        <div class="tech-chips"><span class="prod">PWA</span><span class="prod">WhatsApp API</span><span class="prod">IA + RAG</span><span class="prod">Agenda</span><span class="prod">Analytics</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span><b>Ruta Bienestar</b> · Parcial 2 · Prototipo académico</span>
+    <span>Datos simulados · Sin conexión con sistemas institucionales reales</span>
+  </div>
+</section>
+
+<!-- ================= PÁGINA 2 ================= -->
+<section class="page">
+  <div class="topline">
+    <div class="brandline">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#09843B"/><path d="M14.5 34c0-6.4 6.2-6.4 6.2-12.4s6.2-6 6.2-9.6" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/><circle cx="34" cy="14" r="3.7" fill="#FFB91B"/><circle cx="14.5" cy="34" r="2.1" fill="#AED6C6"/></svg>
+      <div><strong>Ruta Bienestar</strong><span>Ficha del prototipo · Entregable 2</span></div>
+    </div>
+    <span class="top-tag">Qué aporta de diferente</span>
+  </div>
+
+  <div class="section" style="padding-top:16px">
+    <div class="section-head"><span class="num">5</span><h2>Qué aporta de diferente</h2><span class="rule"></span></div>
+    <div class="diff-grid">
+      <div class="diff"><span class="k">1</span><h3>Por situaciones, no por dependencias</h3><p>El estudiante busca con sus palabras (“me va mal en una materia”), no con el nombre del servicio. Menos carga cognitiva, más acceso.</p></div>
+      <div class="diff"><span class="k">2</span><h3>Nativo del canal</h3><p>WhatsApp como puerta de entrada y PWA sin descarga. Responde al 72,4 % que prefiere app o WhatsApp y a la conectividad real.</p></div>
+      <div class="diff"><span class="k">3</span><h3>Sami con límites y derivación</h3><p>IA con contenido validado, sin diagnósticos. Reconoce el riesgo, muestra Línea 106/123 y pasa a una persona cuando hace falta.</p></div>
+      <div class="diff"><span class="k">4</span><h3>Ciclo cerrado, no directorio</h3><p>De la duda a la cita, el recordatorio y el siguiente paso. La mayoría de portales termina en la ficha; aquí empieza el acompañamiento.</p></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><span class="num">6</span><h2>Qué es funcional y qué es simulado</h2><span class="rule"></span></div>
+    <div class="status-grid">
+      <div class="status status--ok">
+        <h3>Funcional en el prototipo</h3>
+        <ul>
+          <li>Navegación entre 7 pantallas y 8 servicios.</li>
+          <li>Búsqueda, filtros, fichas y guardado.</li>
+          <li>Agenda, confirmación, reprogramación y cancelación.</li>
+          <li>Onboarding, notificaciones y Mi ruta.</li>
+          <li>Sami con respuestas guionadas y derivación.</li>
+          <li>Descarga de archivo .ics y persistencia local.</li>
+        </ul>
+      </div>
+      <div class="status status--sim">
+        <h3>Simulado para el borrador</h3>
+        <ul>
+          <li>Servicios, cupos, citas y panel de impacto.</li>
+          <li>Respuestas de IA y conversación de WhatsApp.</li>
+          <li>Datos de estudiantes y métricas del piloto.</li>
+          <li>Integración con calendarios institucionales.</li>
+          <li>Autenticación y backend.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><span class="num">7</span><h2>Cómo abrir el prototipo</h2><span class="rule"></span></div>
+    <div class="open-steps">
+      <div class="open-step"><b>1</b><p>Abre la carpeta <strong>prototipo</strong>.</p></div>
+      <div class="open-step"><b>2</b><p>Haz doble clic en <strong>index.html</strong>.</p></div>
+      <div class="open-step"><b>3</b><p>Usa Chrome o Edge. La app ya es interactiva.</p></div>
+    </div>
+    <div class="flow-chips">
+      <span>Inicio</span><span>Explorar</span><span>Sami</span><span>Detalle</span><span>Agendar</span><span>Confirmación</span><span>Mi ruta</span><span>Onboarding</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><span class="num">8</span><h2>Qué sigue</h2><span class="rule"></span></div>
+    <div class="timeline">
+      <div class="tl"><span>Piloto</span><b>2 servicios, 1 semestre</b><p>Asesoría académica y apoyo psicológico, con dos programas y un grupo de comparación.</p></div>
+      <div class="tl"><span>Medición</span><b>Tasa de conexión efectiva</b><p>Meta: 45 %. Se complementa con activación, tiempo de búsqueda, citas y satisfacción.</p></div>
+      <div class="tl"><span>Escala</span><b>Ocho servicios</b><p>Contenido validado, gobernanza de datos y expansión a otras sedes.</p></div>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>“No se trata de decirle al estudiante que pida ayuda, sino de quitarle las excusas para encontrarla.”</p>
+    <span>Principio de diseño</span>
+  </div>
+
+  <div class="footer">
+    <span><b>Universidad Simón Bolívar</b> · Sede Cúcuta · 2026</span>
+    <span>Julieth Cubides · Miguel Castaño · Joseph Pérez · Jeannys Bautista</span>
+  </div>
+</section>
+
+</body>
+</html>

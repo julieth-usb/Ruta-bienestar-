@@ -1,0 +1,325 @@
+/* ============================================================
+   Ruta Bienestar · Documento académico · Impresión Letter
+   ============================================================ */
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("fonts/Fraunces-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("fonts/PlusJakartaSans-latin.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@page {
+  size: Letter;
+  margin: 0;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+}
+
+body {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 12pt;
+  line-height: 2;
+  color: #151a17;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ---------- Portada ---------- */
+.cover {
+  height: 8.75in;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.12in 0 0;
+  border-top: 14px solid #09843B;
+  position: relative;
+  overflow: hidden;
+}
+.cover::after {
+  content: "";
+  position: absolute;
+  right: -0.35in;
+  bottom: 1.05in;
+  width: 2.9in;
+  height: 2.9in;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 38%, rgba(174,214,198,.38), rgba(251,247,215,.15) 55%, rgba(255,255,255,0) 72%);
+  z-index: 0;
+}
+.cover-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+.cover-logo {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+}
+.cover-inst strong {
+  display: block;
+  font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  font-size: 10pt;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #006341;
+  line-height: 1.2;
+}
+.cover-inst span {
+  display: block;
+  font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  font-size: 8pt;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #6b7a70;
+  margin-top: 4px;
+}
+.cover-main {
+  position: relative;
+  z-index: 1;
+  padding-top: .2in;
+}
+.cover-kicker {
+  display: inline-block;
+  font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  font-size: 8.5pt;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #079AA4;
+  padding: 7px 12px;
+  border: 1px solid #AED6C6;
+  border-radius: 999px;
+  background: #F7FBF8;
+}
+.cover h1 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 62pt;
+  line-height: .95;
+  letter-spacing: -.02em;
+  color: #006341;
+  margin: 20px 0 6px;
+  font-weight: 650;
+}
+.cover-tagline {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 21pt;
+  font-style: italic;
+  color: #09843B;
+  margin: 0 0 26px;
+  line-height: 1.2;
+}
+.cover-title {
+  font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  font-size: 13pt;
+  line-height: 1.5;
+  color: #3c4842;
+  max-width: 5.5in;
+  margin: 0;
+  padding-left: 16px;
+  border-left: 4px solid #FFB91B;
+}
+.cover-meta {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 18px 30px;
+  padding: 22px 0 24px;
+  border-top: 1px solid #DCE8E0;
+  border-bottom: 1px solid #DCE8E0;
+}
+.cover-meta span {
+  display: block;
+  font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  font-size: 7pt;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #079AA4;
+  margin-bottom: 4px;
+}
+.cover-meta p {
+  font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  font-size: 9.5pt;
+  line-height: 1.55;
+  color: #1c2721;
+  margin: 0;
+  text-indent: 0;
+}
+.cover-foot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+.cover-foot i {
+  display: block;
+  width: 46px;
+  height: 4px;
+  border-radius: 99px;
+  background: #FFB91B;
+}
+.cover-foot p {
+  font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  font-size: 8pt;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #6b7a70;
+  margin: 0;
+  text-indent: 0;
+}
+
+/* ---------- Cuerpo ---------- */
+.page-break {
+  page-break-after: always;
+  height: 0;
+  margin: 0;
+}
+#doc > h1:first-of-type {
+  margin-top: 0;
+}
+h1 {
+  font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  font-size: 14pt;
+  line-height: 1.3;
+  color: #006341;
+  text-align: center;
+  margin: 26pt 0 12pt;
+  padding-bottom: 6pt;
+  border-bottom: 1.5pt solid #FFB91B;
+  page-break-after: avoid;
+  font-weight: 800;
+  break-after: avoid;
+}
+h2 {
+  font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  font-size: 12.5pt;
+  line-height: 1.3;
+  color: #09843B;
+  margin: 18pt 0 6pt;
+  page-break-after: avoid;
+  font-weight: 750;
+  break-after: avoid;
+}
+p {
+  margin: 0 0 0;
+  text-align: justify;
+  text-indent: 0.5in;
+  orphans: 3;
+  widows: 3;
+}
+p + p { margin-top: 0; }
+strong { color: #111; }
+em { font-style: italic; }
+
+ul, ol {
+  margin: 6pt 0 10pt 0.3in;
+  padding-left: 0.3in;
+  line-height: 1.7;
+}
+li { margin-bottom: 5pt; text-align: justify; }
+li p { text-indent: 0; }
+
+blockquote {
+  margin: 14pt 0.3in;
+  padding: 10pt 16pt;
+  border-left: 4pt solid #FFB91B;
+  background: #FBF7D7;
+  font-style: italic;
+}
+blockquote p { text-indent: 0; }
+
+a { color: #087E86; text-decoration: none; }
+
+/* ---------- Tablas ---------- */
+.table-title {
+  font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  font-size: 10pt;
+  font-weight: 800;
+  color: #006341;
+  margin: 14pt 0 2pt;
+  text-indent: 0;
+  page-break-after: avoid;
+}
+.table-caption {
+  font-size: 10.5pt;
+  font-style: italic;
+  line-height: 1.35;
+  color: #34423b;
+  margin: 0 0 5pt;
+  text-indent: 0;
+  page-break-after: avoid;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 12pt;
+  font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  font-size: 7.9pt;
+  line-height: 1.35;
+  border-top: 1.6pt solid #09843B;
+  border-bottom: 1.6pt solid #09843B;
+}
+thead { display: table-header-group; }
+tr { page-break-inside: avoid; }
+th {
+  background: #E8F3EC;
+  color: #005533;
+  text-align: left;
+  font-weight: 750;
+  padding: 5pt 6pt;
+  border-bottom: 1pt solid #09843B;
+  vertical-align: bottom;
+}
+td {
+  padding: 5pt 6pt;
+  border-bottom: .5pt solid #D5E5DB;
+  vertical-align: top;
+}
+tbody tr:last-child td { border-bottom: 0; }
+td strong { color: #005533; }
+
+/* ---------- Referencias ---------- */
+h1#referencias,
+#referencias {
+  page-break-before: auto;
+}
+#referencias ~ p,
+.references p {
+  text-indent: -0.5in;
+  padding-left: 0.5in;
+  text-align: left;
+}
+p.reference {
+  text-indent: -0.5in;
+  padding-left: 0.5in;
+  text-align: left;
+  line-height: 1.9;
+  margin-bottom: 6pt;
+}
+
+/* Evita que un encabezado quede solo al final de página */
+h1 + p, h2 + p { page-break-before: avoid; }
+
+@media print {
+  a { color: #087E86; }
+}
